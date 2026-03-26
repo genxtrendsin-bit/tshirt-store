@@ -82,12 +82,19 @@ app.use("/api", limiter); // ✅ apply only to API
 // ===============================
 // 🌐 CORS (PRODUCTION SAFE)
 // ===============================
-app.use(
-  cors({
-    origin: "https://tshirt-store-taupe.vercel.app",
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: function (origin, callback) {
+    if (
+      !origin || // allow Postman / mobile
+      origin.includes("vercel.app")
+    ) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 
 // ===============================
 // 📁 STATIC FILES (IMPORTANT)
