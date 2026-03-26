@@ -1,24 +1,32 @@
-import nodemailer from "nodemailer";
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+import SibApiV3Sdk from "sib-api-v3-sdk";
 
 export const sendEmail = async ({ to, subject, html }) => {
   try {
-    await transporter.sendMail({
-      from: `"${process.env.STORE_NAME}" <${process.env.EMAIL_USER}>`,
-      to,
+    const client = SibApiV3Sdk.ApiClient.instance;
+
+    const apiKey = client.authentications["api-key"];
+    apiKey.apiKey = process.env.BREVO_API_KEY;
+
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+
+    const email = {
+      to: [{ email: to }],
+      sender: {
+        email: process.env.EMAIL_USER,
+        name: process.env.STORE_NAME || "GenXTrends",
+      },
       subject,
-      html
-    });
+      htmlContent: html,
+    };
+
+    const response = await apiInstance.sendTransacEmail(email);
+
+    console.log("✅ Email sent:", response.messageId);
+
   } catch (error) {
-    console.error("Email send error:", error);
+    console.error(
+      "❌ EMAIL ERROR:",
+      error.response?.body || error.message
+    );
   }
 };
