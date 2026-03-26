@@ -326,6 +326,8 @@ router.post("/verify-otp", async (req, res) => {
   try {
     let { email, otp } = req.body;
 
+    console.log("📥 BODY:", req.body);
+
     if (!otp) {
       return res.status(400).json({ message: "OTP missing" });
     }
@@ -335,18 +337,25 @@ router.post("/verify-otp", async (req, res) => {
     const record = await Otp.findOne({ email })
       .sort({ createdAt: -1 });
 
+    console.log("📦 DB RECORD:", record);
+
     if (!record) {
       return res.status(400).json({ message: "OTP not found" });
     }
 
-    if (record.expiresAt < new Date()) {
-      return res.status(400).json({ message: "OTP expired" });
-    }
+    console.log("🧠 Entered OTP:", otp);
+    console.log("🔐 Stored Hash:", record.otp);
 
     const valid = await bcrypt.compare(otp, record.otp);
 
+    console.log("✅ Compare Result:", valid);
+
     if (!valid) {
       return res.status(400).json({ message: "Invalid OTP" });
+    }
+
+    if (record.expiresAt < new Date()) {
+      return res.status(400).json({ message: "OTP expired" });
     }
 
     await Otp.deleteMany({ email });
