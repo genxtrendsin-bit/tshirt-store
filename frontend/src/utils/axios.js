@@ -16,6 +16,7 @@ api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
 
+    // ✅ Attach token only if exists
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -33,18 +34,26 @@ api.interceptors.response.use(
   (error) => {
     const status = error.response?.status;
     const message = error.response?.data?.message || "";
+    const token = localStorage.getItem("token");
 
-    // 🔥 NETWORK ERROR (backend down / deploy issue)
+    // ===============================
+    // 🔥 NETWORK ERROR
+    // ===============================
     if (!error.response) {
       alert("Server not reachable. Please try again later.");
       return Promise.reject(error);
     }
 
-    // 🔥 AUTO LOGOUT (TOKEN EXPIRED / BANNED)
-    if (status === 401 || status === 403) {
+    // ===============================
+    // 🔥 HANDLE AUTH ERRORS SAFELY
+    // ===============================
+    if ((status === 401 || status === 403) && token) {
+      // ✅ Only logout if user was actually logged in
       if (
+        message.toLowerCase().includes("expired") ||
+        message.toLowerCase().includes("invalid") ||
         message.toLowerCase().includes("banned") ||
-        status === 401
+        status === 403
       ) {
         alert(message || "Session expired. Please login again.");
 
