@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../../utils/axios";
-import "./adminLogs.css";
+import "./AdminLogs.css";
 
 export default function AdminLogs() {
 
