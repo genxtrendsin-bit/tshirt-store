@@ -146,6 +146,8 @@ router.post("/login", async (req, res) => {
 
       const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
+      console.log("Generated OTP:", otp);
+
       const hashedOtp = await bcrypt.hash(otp, 10);
 
       const expiresAt = new Date(
@@ -274,6 +276,8 @@ router.post("/send-otp", async (req, res) => {
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
+    console.log("Generated OTP:", otp);
+
     const hashedOtp = await bcrypt.hash(otp, 10);
 
     const expiresAt = new Date(
@@ -322,7 +326,7 @@ router.post("/verify-otp", async (req, res) => {
   try {
     let { email, otp, purpose } = req.body;
 
-    otp = otp.toString(); // 🔥 FIX
+    otp = otp.toString().trim(); // 🔥 CRITICAL FIX
 
     const record = await Otp.findOne({
       email,
@@ -336,6 +340,9 @@ router.post("/verify-otp", async (req, res) => {
     if (record.expiresAt < new Date()) {
       return res.status(400).json({ message: "OTP expired" });
     }
+
+    console.log("Entered OTP:", otp);
+    console.log("Stored Hash:", record.otp);
 
     const valid = await bcrypt.compare(otp, record.otp);
 
@@ -443,6 +450,8 @@ router.post("/send-reset-otp", async (req, res) => {
     }
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    console.log("Generated OTP:", otp);
 
     const hashedOtp = await bcrypt.hash(otp, 10);
 
