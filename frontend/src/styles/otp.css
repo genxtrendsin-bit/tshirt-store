@@ -1,0 +1,185 @@
+/* ===== PAGE ===== */
+
+.otp-page{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  min-height:70vh;
+  padding:20px;
+
+  color:white;
+}
+
+/* ===== CARD (NEW 🔥) ===== */
+
+.otp-card{
+  padding:40px 30px;
+  border-radius:18px;
+
+  background: rgba(15,23,42,0.75);
+  backdrop-filter: blur(16px);
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.8),
+    0 0 30px rgba(37,99,235,0.2);
+
+  text-align:center;
+  width:100%;
+  max-width:400px;
+}
+
+/* ===== TITLE ===== */
+
+.otp-title{
+  font-size:22px;
+  font-weight:600;
+}
+
+.otp-sub{
+  font-size:14px;
+  color:#94a3b8;
+  margin-top:5px;
+}
+
+/* ===== OTP INPUTS ===== */
+
+.otp-container{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin:25px 0;
+}
+
+.otp-container input{
+  width:55px;
+  height:55px;
+
+  font-size:22px;
+  text-align:center;
+
+  border-radius:12px;
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  background: rgba(30,41,59,0.7);
+  color:white;
+
+  transition:0.25s;
+}
+
+/* FOCUS EFFECT */
+
+.otp-container input:focus{
+  outline:none;
+
+  border-color:#2563eb;
+
+  box-shadow:
+    0 0 0 2px rgba(37,99,235,0.2),
+    0 0 15px rgba(37,99,235,0.5);
+
+  transform: scale(1.05);
+}
+
+/* FILLED INPUT (OPTIONAL CLASS) */
+
+.otp-container input.filled{
+  border-color:#a855f7;
+
+  box-shadow:
+    0 0 10px rgba(168,85,247,0.6);
+}
+
+/* ===== VERIFY BUTTON ===== */
+
+.verify-btn{
+  padding:12px 28px;
+
+  border:none;
+  border-radius:10px;
+
+  background: linear-gradient(135deg, #2563eb, #a855f7);
+  color:white;
+
+  font-weight:600;
+  cursor:pointer;
+
+  transition:0.3s;
+
+  box-shadow:0 8px 30px rgba(99,102,241,0.5);
+
+  /* 🔥 FIX */
+  width:auto;
+  min-width:180px;
+
+  align-self:center;
+}
+
+.verify-btn:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 15px 40px rgba(99,102,241,0.8),
+    0 0 20px rgba(168,85,247,0.6);
+}
+
+/* ===== RESEND BUTTON ===== */
+
+.resend-btn{
+  margin-top:12px;
+
+  padding:8px 18px;
+
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+
+  background: rgba(30,41,59,0.7);
+  color:#cbd5f5;
+
+  cursor:pointer;
+
+  transition:0.25s;
+}
+
+.resend-btn:hover{
+  background: rgba(37,99,235,0.2);
+  color:white;
+}
+
+.resend-btn:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
+/* ===== MESSAGE ===== */
+
+.otp-message{
+  margin-top:15px;
+  font-size:14px;
+}
+
+.otp-message.success{
+  color:#22c55e;
+}
+
+.otp-message.error{
+  color:#ef4444;
+}
+
+/* ===== SHAKE ANIMATION (WRONG OTP 🔥) ===== */
+
+.otp-container.error{
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake{
+  0%{ transform:translateX(0); }
+  25%{ transform:translateX(-5px); }
+  50%{ transform:translateX(5px); }
+  75%{ transform:translateX(-5px); }
+  100%{ transform:translateX(0); }
+}

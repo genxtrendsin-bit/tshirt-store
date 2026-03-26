@@ -1,0 +1,266 @@
+/* =========================
+   🌍 GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   🎨 THEME TOKENS
+========================= */
+:root{
+  --bg-dark: #020617;
+  --bg-glass: rgba(15, 23, 42, 0.75);
+
+  --primary: #2563eb;
+  --secondary: #a855f7;
+
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+
+  --border: rgba(255,255,255,0.08);
+}
+
+/* =========================
+   🌌 BACKGROUND
+========================= */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(37,99,235,0.15), transparent),
+    radial-gradient(circle at 80% 70%, rgba(168,85,247,0.15), transparent);
+
+  z-index:-1;
+}
+
+/* =========================
+   📦 CONTAINER
+========================= */
+.container{
+  max-width:1400px;
+  margin:auto;
+  padding:25px;
+}
+
+/* =========================
+   🧊 GLASS UI
+========================= */
+.glass{
+  backdrop-filter: blur(14px);
+  background: var(--bg-glass);
+  border:1px solid var(--border);
+  border-radius:12px;
+
+  box-shadow:
+    0 8px 30px rgba(0,0,0,0.6),
+    0 0 15px rgba(37,99,235,0.08);
+}
+
+/* =========================
+   🛒 PRODUCT GRID
+========================= */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:12px;
+}
+
+/* =========================
+   🧱 PRODUCT CARD
+========================= */
+.product-card{
+  width:100%;
+  max-width:200px;
+
+  background:rgba(15,23,42,0.9);
+  border:1px solid var(--border);
+  border-radius:10px;
+
+  padding:8px;
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
+
+  transition:0.25s;
+}
+
+.product-card:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.5),
+    0 0 12px rgba(37,99,235,0.2);
+}
+
+/* =========================
+   🖼 IMAGE
+========================= */
+.product-image{
+  height:100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.product-image img{
+  max-height:90px;
+  width:100%;
+  object-fit:contain;
+}
+
+/* =========================
+   📄 INFO
+========================= */
+.product-info{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  margin-top:6px;
+  flex-grow:1;
+}
+
+.product-name{
+  font-size:12px;
+  line-height:1.3;
+  height:32px;
+  overflow:hidden;
+}
+
+.product-price{
+  font-size:12.5px;
+  font-weight:600;
+}
+
+/* =========================
+   ⭐ RATING
+========================= */
+.rating{
+  font-size:10px;
+  color:#facc15;
+}
+
+/* =========================
+   🛒 BUTTON
+========================= */
+.cart-btn{
+  margin-top:auto;
+
+  background:#facc15;
+  color:#000;
+
+  border:none;
+  padding:5px;
+
+  border-radius:12px;
+  font-size:10px;
+
+  cursor:pointer;
+}
+
+/* =========================
+   ❤️ WISHLIST
+========================= */
+.wishlist-btn{
+  position:absolute;
+  top:5px;
+  right:5px;
+
+  width:22px;
+  height:22px;
+
+  border-radius:50%;
+  border:none;
+
+  background:#020617;
+  color:white;
+
+  font-size:12px;
+}
+
+/* =========================
+   🛍 PRODUCT ROW (FINAL FIX)
+========================= */
+.product-row{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+
+  gap:10px;
+  padding:10px 0;
+
+  scroll-behavior:smooth;
+}
+
+.product-row::-webkit-scrollbar{
+  height:5px;
+}
+
+.product-row::-webkit-scrollbar-thumb{
+  background:linear-gradient(#2563eb,#a855f7);
+  border-radius:10px;
+}
+
+/* LOCK CARD */
+.product-row .product-card{
+  flex:0 0 auto;
+  width:180px;
+  min-width:130px;
+}
+
+/* =========================
+   📱 MOBILE
+========================= */
+@media (max-width:768px){
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product-row{
+    gap:8px;
+    padding:8px 5px;
+  }
+
+  .product-row .product-card{
+    width:115px;
+    min-width:115px;
+  }
+
+  .product-image{
+    height:85px;
+  }
+
+  .product-image img{
+    max-height:75px;
+  }
+
+  .product-name{
+    font-size:11px;
+  }
+
+}
+
+/* =========================
+   📌 SECTION UTILS
+========================= */
+.section-title{
+  margin-top:50px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.section{
+  margin-top:40px;
+}

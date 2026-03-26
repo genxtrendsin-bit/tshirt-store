@@ -1,0 +1,87 @@
+.admin-logs-page{
+padding:30px;
+background:rgb(34, 34, 50);
+min-height:100vh;
+}
+
+.admin-logs-title{
+font-size:26px;
+font-weight:700;
+margin-bottom:20px;
+color: whitesmoke;
+}
+
+.logs-table-container{
+background:#0f172a;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+}
+
+.logs-table{
+width:100%;
+border-collapse:collapse;
+}
+
+.logs-table th{
+background:#1e293b;
+color:white;
+padding:12px;
+text-align:left;
+font-size:14px;
+}
+
+.logs-table td{
+padding:12px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+.logs-table tr:hover{
+background:darkslateblue;
+}
+
+.log-admin{
+font-weight:600;
+}
+
+/* Action badge */
+
+.log-action{
+padding:4px 8px;
+border-radius:6px;
+font-size:12px;
+font-weight:600;
+}
+
+/* action colors */
+
+.CREATE_PRODUCT{
+background:#dcfce7;
+color:#166534;
+}
+
+.UPDATE_PRODUCT{
+background:#dbeafe;
+color:#1e40af;
+}
+
+.DELETE_PRODUCT{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.log-description{
+color:white;
+}
+
+.log-date{
+color:white;
+font-size:13px;
+}
+
+.logs-loading,
+.logs-empty{
+padding:20px;
+color:#666;
+}

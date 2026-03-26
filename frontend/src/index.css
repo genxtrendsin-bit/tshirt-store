@@ -1,0 +1,312 @@
+/* ===============================
+   🌍 GLOBAL RESET
+================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* ===============================
+   🔗 LINKS
+================================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===============================
+   📦 CONTAINER
+================================= */
+.container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 25px;
+}
+
+/* ===============================
+   🛒 PRODUCT GRID (GLOBAL)
+================================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+/* ===============================
+   🧱 PRODUCT CARD (FINAL SAFE)
+================================= */
+.product-card {
+  width: 100%;
+  max-width: 200px;
+
+  background: #fff;
+  padding: 8px;
+
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===============================
+   🖼 IMAGE (LOCKED SYSTEM)
+================================= */
+.product-image {
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;  /* 🔥 IMPORTANT FIX */
+}
+
+.product-image img {
+  max-height: 90px;
+  width: 100%;
+
+  object-fit: contain;
+}
+
+/* ===============================
+   📄 INFO
+================================= */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+
+  flex-grow: 1;  /* 🔥 prevents stretching bugs */
+}
+
+/* TITLE */
+.product-name {
+  font-size: 12px;
+  line-height: 1.3;
+
+  height: 32px;         /* 🔥 FIXED HEIGHT */
+  overflow: hidden;
+}
+
+/* PRICE */
+.product-price {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+/* ===============================
+   ⭐ RATING
+================================= */
+.rating {
+  font-size: 10px;
+  color: #ff9900;
+}
+
+.rating span {
+  color: #555;
+  font-size: 9px;
+}
+
+/* ===============================
+   💰 PRICE BOX
+================================= */
+.price-box {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.price {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.mrp {
+  font-size: 10px;
+  text-decoration: line-through;
+  color: #777;
+}
+
+.off {
+  font-size: 9px;
+}
+
+/* ===============================
+   🚚 DELIVERY
+================================= */
+.delivery {
+  font-size: 9px;
+  color: #666;
+}
+
+/* ===============================
+   🔘 BUTTON
+================================= */
+.cart-btn {
+  margin-top: auto;   /* 🔥 FIX: pushes button to bottom */
+
+  background: #ffd814;
+  border: none;
+
+  padding: 5px;
+  border-radius: 14px;
+
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.cart-btn:hover {
+  background: #f7ca00;
+}
+
+/* ===============================
+   ❤️ WISHLIST
+================================= */
+.wishlist-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  width: 22px;
+  height: 22px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #fff;
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+/* ===============================
+   🛍 PRODUCT ROW (FINAL SAFE)
+================================= */
+.product-row {
+  display: flex;
+  flex-wrap: nowrap;        /* 🔥 NEVER BREAK */
+  overflow-x: auto;
+
+  gap: 10px;
+  padding: 10px 0;
+
+  scroll-behavior: smooth;
+}
+
+/* hide scrollbar clean */
+.product-row::-webkit-scrollbar {
+  height: 5px;
+}
+
+.product-row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* 🔥 LOCK CARD SIZE */
+.product-row .product-card {
+  flex: 0 0 auto;
+
+  width: 130px;
+  min-width: 130px;
+}
+
+/* ===============================
+   📱 MOBILE (FINAL PERFECT)
+================================= */
+@media (max-width: 768px) {
+
+  /* GRID */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ROW */
+  .product-row {
+    gap: 8px;
+    padding: 8px 5px;
+  }
+
+  .product-row .product-card {
+    width: 115px;
+    min-width: 115px;
+  }
+
+  /* IMAGE */
+  .product-image {
+    height: 85px;
+  }
+
+  .product-image img {
+    max-height: 75px;
+  }
+
+  /* TEXT */
+  .product-name {
+    font-size: 11px;
+  }
+
+  .product-price {
+    font-size: 11.5px;
+  }
+}
+
+/* ===============================
+   ⚠️ SAFETY (PREVENT DETAIL PAGE BREAK)
+================================= */
+
+/* Prevent product page CSS from breaking cards */
+.product-page .product-image {
+  height: auto;
+}
+
+.product-page .product-info {
+  gap: 20px;
+}
+
+/* ===============================
+   🌌 BACKGROUND
+================================= */
+#tsparticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* MOBILE GRID FIX */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.product-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.product-row .product-card {
+  flex: 0 0 auto;
+  width: 115px;
+}
+

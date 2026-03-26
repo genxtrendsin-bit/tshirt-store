@@ -1,0 +1,146 @@
+/* =========================
+   PAGE
+========================= */
+
+.search-page{
+  display:flex;
+  gap:30px;
+
+  padding:40px;
+  max-width:1400px;
+  margin:auto;
+
+  color:white;
+}
+
+/* =========================
+   FILTER PANEL
+========================= */
+
+.filter-panel{
+  width:260px;
+
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(10px);
+
+  padding:20px;
+  border-radius:14px;
+
+  border:1px solid rgba(255,255,255,0.05);
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+
+  position:sticky;      /* 🔥 PRO UX */
+  top:100px;
+  height:fit-content;
+}
+
+/* SECTION */
+
+.filter-section{
+  margin-bottom:25px;
+}
+
+.filter-section h4{
+  margin-bottom:10px;
+  font-size:14px;
+  color:#cbd5f5;
+}
+
+/* =========================
+   SIZE FILTER
+========================= */
+
+.size-filter{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.size-filter button{
+
+  padding:6px 12px;
+
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+
+  background: rgba(30,41,59,0.8);
+  color:#cbd5f5;
+
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.size-filter button:hover{
+  border-color:#60a5fa;
+}
+
+.size-filter .active{
+  background:#2563eb;
+  color:white;
+  border-color:#2563eb;
+}
+
+/* =========================
+   COLOR FILTER
+========================= */
+
+.color-filter{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.color-filter button{
+
+  padding:6px 12px;
+
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+
+  background: rgba(30,41,59,0.8);
+  color:#cbd5f5;
+
+  cursor:pointer;
+  transition:0.25s;
+}
+
+.color-filter button:hover{
+  border-color:#60a5fa;
+}
+
+.color-filter .active{
+  background:#2563eb;
+  color:white;
+  border-color:#2563eb;
+}
+
+/* =========================
+   PRODUCTS GRID
+========================= */
+
+.products-grid{
+  flex:1;
+
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+
+  gap:25px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .search-page{
+    flex-direction:column;
+  }
+
+  .filter-panel{
+    width:100%;
+    position:static; /* remove sticky */
+  }
+
+}

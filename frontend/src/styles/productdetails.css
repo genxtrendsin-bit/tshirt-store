@@ -1,0 +1,317 @@
+/* =========================
+   📄 PRODUCT PAGE LAYOUT
+========================= */
+.product-page{
+  display:grid;
+  grid-template-columns:420px 1fr;
+  gap:50px;
+
+  padding:50px 20px;
+  max-width:1300px;
+  margin:auto;
+
+  color:white;
+}
+
+/* =========================
+   🖼 IMAGE SECTION
+========================= */
+.image-section{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.image-section img{
+  border-radius:14px;
+  background:#020617;
+  padding:10px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.7);
+  transition:0.3s;
+}
+
+.image-section img:hover{
+  transform:scale(1.02);
+}
+
+/* THUMBNAILS */
+.thumbs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.thumb{
+  width:65px;
+  height:65px;
+
+  object-fit:cover;
+  border-radius:8px;
+
+  cursor:pointer;
+
+  border:2px solid transparent;
+  transition:0.25s;
+}
+
+.thumb:hover{
+  transform:scale(1.05);
+}
+
+.thumb.active{
+  border:2px solid #60a5fa;
+  box-shadow:0 0 10px rgba(96,165,250,0.6);
+}
+
+/* =========================
+   📦 INFO SECTION (SCOPED)
+========================= */
+.product-page .product-info {
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* CARD */
+.info-card{
+  background: rgba(15,23,42,0.8);
+  backdrop-filter: blur(10px);
+
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:14px;
+
+  padding:20px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   💰 PRICE + TEXT
+========================= */
+.price{
+  font-size:28px;
+  font-weight:bold;
+  color:#60a5fa;
+}
+
+.rating-box{
+  color:#facc15;
+  margin:8px 0;
+}
+
+.description{
+  color:#cbd5f5;
+  line-height:1.6;
+}
+
+.stock-info{
+  margin-top:6px;
+  font-weight:600;
+}
+
+.in-stock{ color:#22c55e; }
+.out-stock{ color:#ef4444; }
+
+/* =========================
+   🎛 OPTIONS
+========================= */
+.option-box{
+  background: rgba(15,23,42,0.8);
+  border:1px solid rgba(255,255,255,0.05);
+
+  padding:15px;
+  border-radius:12px;
+}
+
+/* SIZE */
+.size-grid{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.size-btn{
+  padding:8px 16px;
+  border-radius:8px;
+
+  background: rgba(30,41,59,0.8);
+  border:1px solid rgba(255,255,255,0.1);
+
+  color:#cbd5f5;
+  cursor:pointer;
+}
+
+.size-btn.active{
+  background:#2563eb;
+  color:white;
+}
+
+/* COLOR */
+.color-options{
+  display:flex;
+  gap:10px;
+}
+
+.color-btn{
+  padding:8px 14px;
+  border-radius:8px;
+
+  background: rgba(30,41,59,0.8);
+  border:1px solid rgba(255,255,255,0.1);
+
+  color:#cbd5f5;
+  cursor:pointer;
+}
+
+.color-btn.active{
+  background:#2563eb;
+  color:white;
+}
+
+/* =========================
+   🔢 QUANTITY
+========================= */
+.qty-controls{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.qty-controls button{
+  padding:6px 12px;
+  border-radius:6px;
+
+  border:1px solid rgba(255,255,255,0.1);
+  background:#020617;
+  color:white;
+
+  cursor:pointer;
+}
+
+/* =========================
+   🛒 BUTTON (SCOPED FIX)
+========================= */
+.product-page .cart-btn{
+  padding:14px;
+  font-size:16px;
+
+  border:none;
+  border-radius:10px;
+
+  background: linear-gradient(135deg,#2563eb,#a855f7);
+  color:white;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+/* =========================
+   📊 DETAILS TABLE
+========================= */
+.product-details-section{
+  margin:50px auto;
+  max-width:1000px;
+}
+
+.spec-table{
+  background: rgba(15,23,42,0.8);
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.spec-row{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 18px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+/* =========================
+   ⭐ REVIEWS
+========================= */
+.review-box{
+  margin:50px auto;
+  max-width:800px;
+
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.review-box textarea{
+  min-height:90px;
+  padding:12px;
+
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.1);
+
+  background:#020617;
+  color:white;
+}
+
+.review-btn{
+  background:#2563eb;
+  color:white;
+
+  border:none;
+  padding:10px 16px;
+
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.reviews-section{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.review-card{
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:15px 0;
+}
+
+.admin-reply{
+  background:#020617;
+  padding:10px;
+  margin-top:8px;
+  border-left:4px solid #2563eb;
+}
+
+/* =========================
+   🛍 RECOMMENDED ROW (SAFE)
+========================= */
+.product-page .product-row{
+  display:flex;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+
+  gap:10px;
+  padding:10px 0;
+}
+
+.product-page .product-row .product-card{
+  flex:0 0 auto;
+  width:130px;
+  min-width:130px;
+}
+
+/* =========================
+   📱 MOBILE
+========================= */
+@media(max-width:768px){
+
+  .product-page{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .product-page .product-row .product-card{
+    width:115px;
+    min-width:115px;
+  }
+
+}

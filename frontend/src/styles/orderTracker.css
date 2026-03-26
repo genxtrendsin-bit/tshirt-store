@@ -1,0 +1,26 @@
+.order-tracker {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.tracker-step {
+  text-align: center;
+  flex: 1;
+}
+
+.tracker-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  margin: auto;
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.tracker-circle.active {
+  background: green;
+  border-color: green;
+  color: white;
+}

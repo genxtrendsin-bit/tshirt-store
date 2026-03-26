@@ -1,0 +1,138 @@
+/* WRAPPER */
+.notif-wrapper {
+  position: relative;
+}
+
+/* BUTTON */
+.notif-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  position: relative;
+}
+
+/* BADGE */
+.notif-badge {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* DROPDOWN */
+.notif-dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+
+  width: 260px;
+  max-height: 300px;
+  overflow-y: auto;
+
+  background: #020617;
+  border-radius: 10px;
+  padding: 10px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+  z-index: 999;
+}
+
+/* ITEM */
+.notif-item {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.notif-item.unread {
+  background: #1e293b;
+  font-weight: 500;
+}
+
+.notif-item.read {
+  background: #020617;
+  color: #94a3b8;
+}
+
+.notif-item:hover {
+  background: #334155;
+}
+
+/* EMPTY */
+.empty-text {
+  text-align: center;
+  color: #94a3b8;
+}
+
+/* OVERLAY (FULL SCREEN FIX) */
+.notif-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999999; /* 🔥 FORCE TOP */
+}
+
+/* MODAL BOX */
+.notif-modal {
+  background: #020617;
+  padding: 20px;
+  border-radius: 12px;
+
+  width: 90%;
+  max-width: 350px;
+
+  color: white;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+
+  animation: popup 0.2s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ACTIONS */
+.notif-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.delete-btn {
+  background: #ef4444;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: white;
+}
+
+.close-btn {
+  background: #334155;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: white;
+}
