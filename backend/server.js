@@ -84,7 +84,7 @@ app.use("/api", limiter); // ✅ apply only to API
 // ===============================
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: "https://tshirt-store-taupe.vercel.app",
     credentials: true,
   })
 );
