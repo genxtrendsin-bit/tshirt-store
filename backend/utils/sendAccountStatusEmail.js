@@ -1,16 +1,4 @@
-import nodemailer from "nodemailer";
-
-/* ==========================
-   TRANSPORTER (MODERN)
-========================== */
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+import SibApiV3Sdk from "sib-api-v3-sdk";
 
 /* ==========================
    HTML TEMPLATE
@@ -69,20 +57,25 @@ const generateTemplate = ({ title, message, color }) => {
 ========================== */
 
 export const sendAccountStatusEmail = async (email, isBanned) => {
-
   try {
+    const client = SibApiV3Sdk.ApiClient.instance;
+
+    const apiKey = client.authentications["api-key"];
+    apiKey.apiKey = process.env.BREVO_API_KEY;
+
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
     const subject = isBanned
       ? "🚫 Account Suspended | GenXTrends"
       : "✅ Account Restored | GenXTrends";
 
-    const html = isBanned
+    const htmlContent = isBanned
       ? generateTemplate({
           title: "Account Suspended",
           color: "#ef4444",
           message: `
             Your account has been <b>suspended</b> due to policy violations.<br/><br/>
-            If you believe this is a mistake, please contact our support team.
+            If you believe this is a mistake, please contact our support team.<br/><br/>
 
             <a href="mailto:support@genxtrends.com">Contact Support</a>
           `
@@ -92,25 +85,30 @@ export const sendAccountStatusEmail = async (email, isBanned) => {
           color: "#22c55e",
           message: `
             Good news! Your account has been <b>restored</b>.<br/><br/>
-            You can now continue shopping on GenXTrends.
+            You can now continue shopping on GenXTrends.<br/><br/>
 
             <a href="mailto:support@genxtrends.com">Contact Support</a>
           `
         });
 
-    await transporter.sendMail({
-      from: `"GenXTrends Support" <${process.env.EMAIL_USER}>`,
-      to: email,
+    const emailData = {
+      to: [{ email }],
+      sender: {
+        email: process.env.EMAIL_USER,
+        name: "GenXTrends Support",
+      },
       subject,
-      html
-    });
+      htmlContent,
+    };
 
-    console.log(`📧 Account status email sent to ${email}`);
+    const response = await apiInstance.sendTransacEmail(emailData);
+
+    console.log(`📧 Account status email sent to ${email}`, response.messageId);
 
   } catch (err) {
-
-    console.error("EMAIL ERROR:", err);
-
+    console.error(
+      "❌ EMAIL ERROR:",
+      err.response?.body || err.message
+    );
   }
-
 };
