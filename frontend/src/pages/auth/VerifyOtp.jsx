@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { useNavigate,useLocation } from "react-router-dom";
-import API from "../utils/axios";
+import axios from "../../utils/axios";
 import OtpInput from "../../components/OtpInput";
 import "../../styles/otp.css";
 
