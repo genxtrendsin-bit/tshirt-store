@@ -9,7 +9,7 @@ export const sendEmail = async ({ to, subject, html }) => {
 
     const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
-    const email = {
+    const emailData = {
       to: [{ email: to }],
       sender: {
         email: process.env.EMAIL_USER,
@@ -19,14 +19,14 @@ export const sendEmail = async ({ to, subject, html }) => {
       htmlContent: html,
     };
 
-    const response = await apiInstance.sendTransacEmail(email);
+    const response = await apiInstance.sendTransacEmail(emailData);
 
     console.log("✅ Email sent:", response.messageId);
 
-  } catch (error) {
+  } catch (err) {
     console.error(
       "❌ EMAIL ERROR:",
-      error.response?.body || error.message
+      err.response?.body || err.message
     );
   }
 };
