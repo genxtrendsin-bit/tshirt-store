@@ -69,10 +69,15 @@ export default function Checkout() {
   }, []);
 
   // ================= FETCH =================
+
   useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
     fetchCart();
     fetchCoupons();
-  }, []);
+  }
+}, []);
 
   const fetchCart = async () => {
     try {

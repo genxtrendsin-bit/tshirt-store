@@ -47,9 +47,12 @@ export default function AdminOrders() {
   };
 
   useEffect(() => {
-    fetchOrders();
-  }, []);
+  const token = localStorage.getItem("token");
 
+  if (token) {
+    fetchOrders();
+  }
+}, []);
   /* 🔥 FIXED: FILTER HOOK (BEFORE RETURN) */
   const {
     filteredData: filteredOrders,

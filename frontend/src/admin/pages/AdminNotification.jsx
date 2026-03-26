@@ -11,8 +11,12 @@ export default function AdminNotification() {
 
   // 🔥 FETCH ALL SENT NOTIFICATIONS
   useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
     fetchNotifications();
-  }, []);
+  }
+}, []);
 
   const fetchNotifications = async () => {
     try {

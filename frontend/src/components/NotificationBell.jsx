@@ -15,8 +15,12 @@ export default function NotificationBell() {
 
   // ================= FETCH =================
   useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
     fetchNotifications();
-  }, []);
+  }
+}, []);
 
   const fetchNotifications = async () => {
     try {

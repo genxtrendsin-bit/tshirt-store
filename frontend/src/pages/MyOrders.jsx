@@ -56,8 +56,12 @@ export default function MyOrders() {
   };
 
   useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
     fetchOrders();
-  }, []);
+  }
+}, []);
 
   const [customReason, setCustomReason] = useState("");
 

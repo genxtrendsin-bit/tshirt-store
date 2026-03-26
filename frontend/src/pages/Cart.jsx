@@ -12,8 +12,14 @@ export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    fetchCart();
+    const token = localStorage.getItem("token");
+  
+    if (token) {
+      fetchCart();
+    }
   }, []);
+
+  
 
   const fetchCart = async () => {
     try {

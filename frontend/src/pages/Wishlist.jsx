@@ -11,8 +11,12 @@ export default function Wishlist() {
 
     // ===== FETCH WISHLIST =====
     useEffect(() => {
-        fetchWishlist();
-    }, []);
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    fetchWishlist();
+  }
+}, []);
 
     const fetchWishlist = async () => {
         try {
