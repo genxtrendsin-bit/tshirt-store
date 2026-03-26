@@ -324,14 +324,16 @@ router.post("/send-otp", async (req, res) => {
 
 router.post("/verify-otp", async (req, res) => {
   try {
-    let { email, otp, purpose } = req.body;
+    let { email, otp } = req.body;
 
-    otp = otp.toString().trim(); // 🔥 CRITICAL FIX
+    if (!otp) {
+      return res.status(400).json({ message: "OTP missing" });
+    }
 
-    const record = await Otp.findOne({
-      email,
-      purpose
-    }).sort({ createdAt: -1 });
+    otp = otp.toString().trim();
+
+    const record = await Otp.findOne({ email })
+      .sort({ createdAt: -1 });
 
     if (!record) {
       return res.status(400).json({ message: "OTP not found" });
@@ -341,29 +343,19 @@ router.post("/verify-otp", async (req, res) => {
       return res.status(400).json({ message: "OTP expired" });
     }
 
-    console.log("Entered OTP:", otp);
-    console.log("Stored Hash:", record.otp);
-
     const valid = await bcrypt.compare(otp, record.otp);
 
     if (!valid) {
-      console.log("❌ OTP mismatch");
-      console.log("Entered OTP:", otp);
-      console.log("Stored Hash:", record.otp);
-
       return res.status(400).json({ message: "Invalid OTP" });
     }
 
-    await Otp.deleteMany({ email, purpose });
+    await Otp.deleteMany({ email });
 
     res.json({ message: "OTP verified" });
 
   } catch (err) {
     console.error("VERIFY OTP ERROR:", err);
-
-    res.status(500).json({
-      message: "Verification failed"
-    });
+    res.status(500).json({ message: "Verification failed" });
   }
 });
 

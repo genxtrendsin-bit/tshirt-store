@@ -8,11 +8,11 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const [loading,setLoading] = useState(false);
-  const [success,setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
 
 
@@ -33,19 +33,19 @@ export default function Login() {
       return;
     }
 
-    try{
+    try {
 
       setLoading(true);
 
-      const res = await API.post("/auth/login",{
+      const res = await API.post("/auth/login", {
         email,
         password
       });
 
-      if(res.data.admin2fa){
+      if (res.data.admin2fa) {
 
-        navigate("/verify-admin-otp",{
-          state:{ email }
+        navigate("/verify-admin-otp", {
+          state: { email }
         });
 
         return;
@@ -54,19 +54,19 @@ export default function Login() {
 
       setSuccess(true);
 
-      localStorage.setItem("token",res.data.token);
-      localStorage.setItem("user",JSON.stringify(res.data.user));
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate("/");
         window.location.reload();
-      },900);
+      }, 900);
 
-    }catch(err){
+    } catch (err) {
 
       alert(err?.response?.data?.message || "Invalid email or password");
 
-    }finally{
+    } finally {
 
       setLoading(false);
 
@@ -76,29 +76,29 @@ export default function Login() {
 
 
 
-  const googleSuccess = async (credentialResponse)=>{
+  const googleSuccess = async (credentialResponse) => {
 
-    try{
+    try {
 
-      const res = await API.post("/auth/google",{
-        token:credentialResponse.credential
+      const res = await API.post("/auth/google", {
+        token: credentialResponse.credential
       });
 
-      localStorage.setItem("token",res.data.token);
-      localStorage.setItem("user",JSON.stringify(res.data.user));
+      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
 
       navigate("/");
       window.location.reload();
 
-    }catch (err) {
+    } catch (err) {
 
-  if (err.response?.status === 403) {
-    alert(err.response.data.message); // 🔥 SHOW BAN MESSAGE
-    return;
-  }
+      if (err.response?.status === 403) {
+        alert(err.response.data.message); // 🔥 SHOW BAN MESSAGE
+        return;
+      }
 
-  alert("Google login failed");
-}
+      alert("Google login failed");
+    }
 
   };
 
@@ -111,18 +111,18 @@ export default function Login() {
       return;
     }
 
-    navigate("/verify-otp",{
-      state:{
+    navigate("/verify-otp", {
+      state: {
         email,
-        purpose:"reset"
+        purpose: "reset"
       }
     });
 
-    try{
+    try {
 
-      await API.post("/auth/send-reset-otp",{email});
+      await API.post("/auth/send-reset-otp", { email });
 
-    }catch(err){
+    } catch (err) {
 
       alert(err?.response?.data?.message || "Failed to send OTP");
 
@@ -132,7 +132,7 @@ export default function Login() {
 
 
 
-  return(
+  return (
 
     <div className="auth-page">
 
@@ -143,8 +143,8 @@ export default function Login() {
         <input
           placeholder="Email"
           value={email}
-          onChange={(e)=>{
-            const value = e.target.value.replace(/\s/g,"");
+          onChange={(e) => {
+            const value = e.target.value.replace(/\s/g, "");
             setEmail(value);
           }}
         />
@@ -153,8 +153,8 @@ export default function Login() {
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e)=>{
-            const value = e.target.value.replace(/\s/g,"");
+          onChange={(e) => {
+            const value = e.target.value.replace(/\s/g, "");
             setPassword(value);
           }}
         />
@@ -182,7 +182,7 @@ export default function Login() {
 
         <GoogleLogin
           onSuccess={googleSuccess}
-          onError={()=>console.log("Google Login Failed")}
+          onError={() => console.log("Google Login Failed")}
         />
 
 
