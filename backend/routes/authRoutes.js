@@ -144,11 +144,7 @@ router.post("/login", async (req, res) => {
         });
       }
 
-      const otp = otpGenerator.generate(6, {
-        upperCaseAlphabets: false,
-        lowerCaseAlphabets: false,
-        specialChars: false
-      });
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
       const hashedOtp = await bcrypt.hash(otp, 10);
 
@@ -276,11 +272,7 @@ router.post("/send-otp", async (req, res) => {
       });
     }
 
-    const otp = otpGenerator.generate(6, {
-      upperCaseAlphabets: false,
-      lowerCaseAlphabets: false,
-      specialChars: false
-    });
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
     const hashedOtp = await bcrypt.hash(otp, 10);
 
@@ -327,10 +319,10 @@ router.post("/send-otp", async (req, res) => {
 ========================== */
 
 router.post("/verify-otp", async (req, res) => {
-
   try {
+    let { email, otp, purpose } = req.body;
 
-    const { email, otp, purpose } = req.body;
+    otp = otp.toString(); // 🔥 FIX
 
     const record = await Otp.findOne({
       email,
@@ -338,41 +330,34 @@ router.post("/verify-otp", async (req, res) => {
     }).sort({ createdAt: -1 });
 
     if (!record) {
-      return res.status(400).json({
-        message: "OTP not found"
-      });
+      return res.status(400).json({ message: "OTP not found" });
     }
 
     if (record.expiresAt < new Date()) {
-      return res.status(400).json({
-        message: "OTP expired"
-      });
+      return res.status(400).json({ message: "OTP expired" });
     }
 
     const valid = await bcrypt.compare(otp, record.otp);
 
     if (!valid) {
-      return res.status(400).json({
-        message: "Invalid OTP"
-      });
+      console.log("❌ OTP mismatch");
+      console.log("Entered OTP:", otp);
+      console.log("Stored Hash:", record.otp);
+
+      return res.status(400).json({ message: "Invalid OTP" });
     }
 
     await Otp.deleteMany({ email, purpose });
 
-    res.json({
-      message: "OTP verified"
-    });
+    res.json({ message: "OTP verified" });
 
   } catch (err) {
-
     console.error("VERIFY OTP ERROR:", err);
 
     res.status(500).json({
       message: "Verification failed"
     });
-
   }
-
 });
 
 /* ==========================
@@ -457,11 +442,7 @@ router.post("/send-reset-otp", async (req, res) => {
       });
     }
 
-    const otp = otpGenerator.generate(6, {
-      upperCaseAlphabets: false,
-      lowerCaseAlphabets: false,
-      specialChars: false
-    });
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
     const hashedOtp = await bcrypt.hash(otp, 10);
 
