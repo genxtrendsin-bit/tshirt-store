@@ -102,7 +102,7 @@ router.post("/verify", verifyToken, async (req, res) => {
       success: true,
       paymentId: razorpay_payment_id,
       method: payment.method,
-      email: req.user.email,
+      email: req.user.paymentId,
       contact: payment.contact
     });
 
