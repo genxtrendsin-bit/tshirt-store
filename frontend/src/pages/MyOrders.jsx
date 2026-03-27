@@ -340,18 +340,7 @@ export default function MyOrders() {
             )}
 
             {order.status !== "Delivered" &&
-              order.status !== "Cancelled" && (
-
-                <button
-                  onClick={() => {
-                    setSelectedOrder(order);
-                    setShowCancelPopup(true);
-                  }}
-                >
-                  Cancel Order
-                </button>
-
-              )}
+              order.status !== "Cancelled" }
 
             <button onClick={() => downloadInvoice(order._id)}>
               Download Invoice
