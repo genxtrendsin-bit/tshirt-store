@@ -43,7 +43,7 @@ const generateTemplate = ({ title, message, color }) => {
         </p>
 
         <p style="font-size: 12px; color: #999;">
-          – GenXTrends Team
+          – DJKavod Team
         </p>
       </div>
 
@@ -66,8 +66,8 @@ export const sendAccountStatusEmail = async (email, isBanned) => {
     const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
     const subject = isBanned
-      ? "🚫 Account Suspended | GenXTrends"
-      : "✅ Account Restored | GenXTrends";
+      ? "🚫 Account Suspended | DJKavod"
+      : "✅ Account Restored | DJKavod";
 
     const htmlContent = isBanned
       ? generateTemplate({
@@ -77,7 +77,7 @@ export const sendAccountStatusEmail = async (email, isBanned) => {
             Your account has been <b>suspended</b> due to policy violations.<br/><br/>
             If you believe this is a mistake, please contact our support team.<br/><br/>
 
-            <a href="mailto:support@genxtrends.com">Contact Support</a>
+            <a href="mailto:genxtrends.in@gmail.com">Contact Support</a>
           `
         })
       : generateTemplate({
@@ -85,9 +85,9 @@ export const sendAccountStatusEmail = async (email, isBanned) => {
           color: "#22c55e",
           message: `
             Good news! Your account has been <b>restored</b>.<br/><br/>
-            You can now continue shopping on GenXTrends.<br/><br/>
+            You can now continue shopping on DJKavod.<br/><br/>
 
-            <a href="mailto:support@genxtrends.com">Contact Support</a>
+            <a href="mailto:genxtrends.in@gmail.com">Contact Support</a>
           `
         });
 
@@ -95,7 +95,7 @@ export const sendAccountStatusEmail = async (email, isBanned) => {
       to: [{ email }],
       sender: {
         email: process.env.EMAIL_USER,
-        name: "GenXTrends Support",
+        name: "DJKavod Support",
       },
       subject,
       htmlContent,

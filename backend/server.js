@@ -83,17 +83,12 @@ app.use("/api", limiter); // ✅ apply only to API
 // 🌐 CORS (PRODUCTION SAFE)
 // ===============================
 app.use(cors({
-  origin: function (origin, callback) {
-    if (
-      !origin || // allow Postman / mobile
-      origin.includes("vercel.app")
-    ) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
+  origin: [
+    "https://djkavod.in",
+    "https://www.djkavod.in",
+    "http://localhost:5173"
+  ],
+  credentials: true
 }));
 
 // ===============================

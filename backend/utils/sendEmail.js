@@ -13,7 +13,7 @@ export const sendEmail = async ({ to, subject, html }) => {
       to: [{ email: to }],
       sender: {
         email: process.env.EMAIL_USER,
-        name: process.env.STORE_NAME || "GenXTrends",
+        name: process.env.STORE_NAME || "DJKavod",
       },
       subject,
       htmlContent: html,

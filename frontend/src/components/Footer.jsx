@@ -26,7 +26,7 @@ export default function Footer() {
 
                 <div className="footer-col">
 
-                    <h3>GenXTrends</h3>
+                    <h3>DJKavod</h3>
 
                     <p>
                         Modern fashion and trending products at the best price.
@@ -108,7 +108,7 @@ export default function Footer() {
 
                 <p>
 
-                    © {new Date().getFullYear()} GenXTrends. All rights reserved.
+                    © {new Date().getFullYear()} DJKavod. All rights reserved.
 
                 </p>
 

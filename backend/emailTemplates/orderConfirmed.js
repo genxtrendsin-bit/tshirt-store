@@ -20,7 +20,7 @@ export const orderConfirmedTemplate = (order, user) => {
 
     <div style="max-width:600px;margin:auto;background:white;padding:20px;border-radius:8px">
 
-      <h2 style="color:#0d6efd">GenXTrends</h2>
+      <h2 style="color:#0d6efd">DJKavod</h2>
 
       <h3>Order Confirmed 🎉</h3>
 
@@ -57,7 +57,7 @@ export const orderConfirmedTemplate = (order, user) => {
       <hr/>
 
       <p style="font-size:14px;color:#777">
-        Thank you for shopping with <b>GenXTrends</b>.
+        Thank you for shopping with <b>DJKavod</b>.
       </p>
 
     </div>

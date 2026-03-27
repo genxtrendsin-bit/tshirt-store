@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       {/* 🔥 HERO */}
       <div className="legal-hero">
         <h1>Privacy Policy</h1>
-        <p>Your data is safe with <span>GenXTrends</span></p>
+        <p>Your data is safe with <span>DJKavod</span></p>
       </div>
 
       {/* 🔥 CONTENT */}
@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
           <h3>📞 Contact Us</h3>
           <p>
             For privacy-related concerns, contact us at  
-            <b> support@genxtrends.in </b>
+            <b> genxtrends.in@gmail.com </b>
           </p>
         </div>
 

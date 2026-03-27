@@ -8,7 +8,7 @@ export default function Terms() {
       {/* 🔥 HERO */}
       <div className="legal-hero">
         <h1>Terms & Conditions</h1>
-        <p>Welcome to <span>GenXTrends</span></p>
+        <p>Welcome to <span>DJKavod</span></p>
       </div>
 
       {/* 🔥 CONTENT */}
@@ -17,7 +17,7 @@ export default function Terms() {
         <div className="legal-card">
           <h3>🛒 Use of Website</h3>
           <p>
-            By accessing GenXTrends, you agree to use our services for lawful
+            By accessing DJKavod, you agree to use our services for lawful
             purposes only and comply with all applicable laws.
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function Terms() {
         <div className="legal-card">
           <h3>⚖️ Limitation of Liability</h3>
           <p>
-            GenXTrends is not liable for indirect or incidental damages arising
+            DJKavod is not liable for indirect or incidental damages arising
             from use of our platform.
           </p>
         </div>
@@ -73,7 +73,7 @@ export default function Terms() {
         <div className="legal-card">
           <h3>📞 Contact Us</h3>
           <p>
-            For any questions, contact us at <b>support@genxtrends.in</b>
+            For any questions, contact us at <b>genxtrends.in@gmail.com</b>
           </p>
         </div>
 

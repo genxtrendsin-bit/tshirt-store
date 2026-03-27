@@ -12,7 +12,7 @@ export const orderShippedTemplate = (order, user) => {
 
   <hr/>
 
-  <p>GenXTrends</p>
+  <p>DJKavod</p>
 
   </div>
   `;

@@ -137,7 +137,7 @@ export const generateInvoice = (order, res) => {
 
   doc.rect(350, y + 170, 200, 60).stroke();
 
-  doc.text(" GenXTrends ", 360, y + 180);
+  doc.text(" DJKavod ", 360, y + 180);
   doc.text("Authorized Signatory", 360, y + 210);
 
 

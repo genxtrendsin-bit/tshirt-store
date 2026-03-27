@@ -24,7 +24,7 @@ export const sendOrderPending = async (order, user) => {
 export const sendOrderConfirmed = async (order, user) => {
   await sendEmail({
     to: user.email,
-    subject: "Order Confirmed - GenXTrends",
+    subject: "Order Confirmed - DJKavod",
     html: orderConfirmedTemplate(order, user)
   });
 };

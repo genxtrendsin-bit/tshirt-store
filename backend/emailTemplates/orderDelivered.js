@@ -8,7 +8,7 @@ export const orderDeliveredTemplate = (order, user) => {
 
   <p>Your order <b>#${order._id}</b> has been delivered.</p>
 
-  <p>Thank you for shopping with GenXTrends!</p>
+  <p>Thank you for shopping with DJKavod!</p>
 
   </div>
   `;

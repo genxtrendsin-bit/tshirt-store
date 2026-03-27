@@ -8,7 +8,7 @@ export default function ShippingInfo() {
       {/* 🔥 HERO */}
       <div className="legal-hero">
         <h1>Shipping Information</h1>
-        <p>Fast & Reliable Delivery by <span>GenXTrends</span></p>
+        <p>Fast & Reliable Delivery by <span>DJKavod</span></p>
       </div>
 
       {/* 🔥 CONTENT */}

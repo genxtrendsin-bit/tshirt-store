@@ -88,7 +88,7 @@ color:#475569;
 <div class="container">
 <div class="card">
 
-<div class="logo">GenXTrends</div>
+<div class="logo">DJKavod</div>
 
 <div class="title">Verify Your Account</div>
 
@@ -108,7 +108,7 @@ Your account security is important to us.
 </div>
 
 <div class="footer">
-© ${new Date().getFullYear()} GenXTrends  
+© ${new Date().getFullYear()} DJKavod  
 <br/>
 Secure Authentication System
 </div>
@@ -124,9 +124,9 @@ Secure Authentication System
       to: [{ email }],
       sender: {
         email: process.env.EMAIL_USER,
-        name: "GenXTrends Security",
+        name: "DJKavod Security",
       },
-      subject: "Your GenXTrends Verification Code",
+      subject: "Your DJKavod Verification Code",
       htmlContent,
     };
 
