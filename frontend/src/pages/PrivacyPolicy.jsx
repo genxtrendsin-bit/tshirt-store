@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
       {/* 🔥 HERO */}
       <div className="legal-hero">
         <h1>Privacy Policy</h1>
-        <p>Your data is safe with <span>DJKavod</span></p>
+        <p>Your data is safe with <span>BARATEES</span></p>
       </div>
 
       {/* 🔥 CONTENT */}

@@ -84,9 +84,10 @@ app.use("/api", limiter); // ✅ apply only to API
 // ===============================
 app.use(cors({
   origin: [
-    "https://djkavod.in",
-    "https://www.djkavod.in",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://baratees.in",
+    "https://www.baratees.in"
+
   ],
   credentials: true
 }));

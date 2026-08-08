@@ -371,7 +371,7 @@ export default function Checkout() {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID,
         amount: order.amount,
         currency: "INR",
-        name: "DJKavod",
+        name: "BARATEES",
         order_id: order.id,
 
         handler: async function (response) {

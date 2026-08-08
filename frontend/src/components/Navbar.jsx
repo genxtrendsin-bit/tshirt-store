@@ -115,14 +115,14 @@ export default function Navbar() {
 
         {/* LOGO */}
         <div className="logo" onClick={() => navigate("/")}>
-          DJKavod
+          BARATEES
         </div>
 
         {/* SEARCH BAR */}
         <div className="search-container">
 
           <input
-            placeholder="Search DJKavod"
+            placeholder="Search BARATEES"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => {

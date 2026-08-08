@@ -15,6 +15,6 @@ export const orderPendingTemplate = (order, user) => {
 
     <br/>
 
-    <p>Thanks for shopping with <b>DJKavod</b> ❤️</p>
+    <p>Thanks for shopping with <b>BARATEES</b> ❤️</p>
   `;
 };
